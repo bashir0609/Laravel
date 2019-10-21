@@ -1,10 +1,13 @@
 web.php
 --------
+```
 Route::get('contact', 'ContactController@create');
 Route::get('contact', 'ContactController@store');
+```
 
 ContactController.php
 --------------------
+```
 use Illuminate\Support\Mail;
 
 public fuction create()
@@ -24,7 +27,7 @@ public function store()
   Return redirect('contact')->with('message', 'Thanks for your message, We will be in touch.');
   
 }
-
+```
 
 contact\create.blade.php
 ----------------------------
@@ -49,12 +52,16 @@ layouts\app.blade.php
 
 Craete Mailable Class
 ------------
+```
 php artisan make:mail ContactMail --markdown=emails.contact.contact-from
+```
 
 .env
 --------
+```
 MAIL_USERNAME= your username
 MAIL_PASSWORD= your password
+```
 
 emails\contact\contact-from.blade.php
 -------------------------------------
@@ -66,5 +73,6 @@ emails\contact\contact-from.blade.php
 <strong>Name</strong> {{$data['name'] }}
 <strong>Email</strong> {{$data['email'] }}
 <strong>Message</strong> {{ $date['message'] }}
-```
+
 @endcomponent
+```
