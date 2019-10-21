@@ -28,6 +28,7 @@ public function store()
 
 contact\create.blade.php
 ----------------------------
+```
 <form action="/contact" method="POST">
 @csrf
   name
@@ -35,14 +36,16 @@ contact\create.blade.php
   message
   btn
 </form>
-
+```
 layouts\app.blade.php
 ---------------------
+```
 @if(session()->has('message'))
   <div class="alert alert-success" role="alert">
     <strong>Success</strong> {{ session()->get('message') }}
   </div
 @endif
+```
 
 Craete Mailable Class
 ------------
@@ -55,11 +58,11 @@ MAIL_PASSWORD= your password
 
 emails\contact\contact-from.blade.php
 -------------------------------------
+```
 @component('mail::message')
 
 #Thank you for your message
 
-```
 <strong>Name</strong> {{$data['name'] }}
 <strong>Email</strong> {{$data['email'] }}
 <strong>Message</strong> {{ $date['message'] }}
