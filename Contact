@@ -50,8 +50,8 @@ php artisan make:mail ContactMail --markdown=emails.contact.contact-from
 
 .env
 --------
-MAIL_USERNAME=
-MAIL_PASSWORD=
+MAIL_USERNAME= your username
+MAIL_PASSWORD= your password
 
 emails\contact\contact-from.blade.php
 -------------------------------------
