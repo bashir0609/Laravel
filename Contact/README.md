@@ -59,7 +59,7 @@ emails\contact\contact-from.blade.php
 
 #Thank you for your message
 
-<strong>Name</strong> {{$data['name'] }}
-<strong>Email</strong> {{$data['email'] }}
-<strong>Message</strong> {{ $date['message'] }}
+#<strong>Name</strong> {{$data['name'] }}
+#<strong>Email</strong> {{$data['email'] }}
+#<strong>Message</strong> {{ $date['message'] }}
 @endcomponent
