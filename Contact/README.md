@@ -8,7 +8,11 @@ Route::get('contact', 'ContactController@store');
 ContactController.php
 --------------------
 ```
-use Illuminate\Support\Mail;
+php artisan make:controller ContactController
+```
+```
+
+use Illuminate\Support\Facades\Mail;
 
 public function create()
 {
