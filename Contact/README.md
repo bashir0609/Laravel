@@ -10,7 +10,7 @@ ContactController.php
 ```
 use Illuminate\Support\Mail;
 
-public fuction create()
+public function create()
 {
   return view('contact.create');
 }
