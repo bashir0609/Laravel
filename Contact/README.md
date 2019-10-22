@@ -16,7 +16,7 @@ public function create()
 }
 public function store()
 {
-  $data = request()->valudate([
+  $data = $request()->valudate([
     'name' => 'required',
     'email' => 'required|email',
     'message' => 'required',
