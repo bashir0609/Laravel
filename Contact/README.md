@@ -59,6 +59,36 @@ Craete Mailable Class
 ```
 php artisan make:mail ContactMail --markdown=emails.contact.contact-from
 ```
+ContactMail.php
+---------------
+```
+class ContactMail extends Mailable
+{
+    use Queueable, SerializesModels;
+    public $data;
+
+    /**
+     * Create a new message instance.
+     *
+     * @return void
+     */
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
+
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
+    public function build()
+    {
+        return $this->markdown('emails.contact.contact-from');
+    }
+}
+
+```
 
 .env
 --------
