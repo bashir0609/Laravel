@@ -1,3 +1,9 @@
+```
+php artisan make:model customer -m
+
+php artisan make:controller CustomersController
+```
+
 create_customers_table.php
 --------------------------
 ```
