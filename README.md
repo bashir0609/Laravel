@@ -1,9 +1,7 @@
 # Laravel
-Laravel
 ```
 1. CRUD : General CRUD
 2. Contact : Contact Form
-
 3. User : Show All Registered Users from Database
 ```
 Start a new project
