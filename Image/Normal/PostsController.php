@@ -19,30 +19,28 @@ class PostsController extends Controller
 
     public function store()
     {
-        $this->authorize('create', Post::class);
-        $post = Post::create($this->validateRequest());
-        $this->storeImage($post);
+        $data = request()->validate([
+            'caption' => 'required',
+            'image' => 'required|image'
+        ]);
+
+        $imagePath = request('image')->store('uploads', 'public');
+        
+        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
+        $image->save();
+
+        auth()->user()->posts()->create([
+            'caption' => $data['caption'],
+            'image' => $imagePath,
+
+        ]);
         
         return redirect('/profile/'.auth()->user()->id);
     }
     
-    private function validateRequest()
+    public function show(Post $post)
     {
-        return request()->validate([
-            'caption' => 'required',
-            'image' => 'sometimes|file|image|max:5000',
-        ]);
-    }
-    
-    private function storeImage($post)
-    {
-        if (request()->has('image')) {
-            $post->update([
-                'image' => request()->image->store('uploads', 'public'),
-            ]);
-            $image = Image::make(public_path('storage/' . $post->image))->fit(300, 300, null, 'top-left');
-            $image->save();
-        }
+        return view('posts.show', compact('post'));
     }
 
 }
