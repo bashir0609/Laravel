@@ -1,3 +1,4 @@
+```
 public function store()
     {
        request()->validate([
@@ -12,3 +13,4 @@ public function store()
         ->withSuccess('Great! Image has been successfully uploaded.');
  
     }
+```
