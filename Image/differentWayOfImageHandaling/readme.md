@@ -26,6 +26,25 @@ public function store()
         return back()->with('success','You have successfully upload image.');
     }
 ```
+```
+public function store()
+    {
+       request()->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+       ]);
+       if ($files = $request->file('image')) {
+           $destinationPath = 'public/image/'; // upload path
+           $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+           $files->move($destinationPath, $profileImage);
+           $insert['image'] = "$profileImage";
+        }
+        $check = Image::insertGetId($insert);
+ 
+        return Redirect::to("image")
+        ->withSuccess('Great! Image has been successfully uploaded.');
+ 
+    }
+```
 
 Authenticated User
 ------------------
