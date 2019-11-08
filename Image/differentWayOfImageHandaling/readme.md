@@ -3,6 +3,35 @@ Unauthenticated User
 ```
 public function store()
     {
+        $customer = Customer::create($this->validateRequest());
+        $this->storeImage($customer);
+        return redirect('customers');
+    }
+private function validateRequest()
+{
+    return request()->validate([
+        'name' => 'required|min:3',
+        'email' => 'required|email',
+        'active' => 'required',
+        'company_id' => 'required',
+        'image' => 'sometimes|file|image|max:5000',
+    ]);
+}
+private function storeImage($customer)
+{
+    if (request()->has('image')) {
+        $customer->update([
+            'image' => request()->image->store('uploads', 'public'),
+        ]);
+        $image = Image::make(public_path('storage/' . $customer->image))->fit(300, 300, null, 'top-left');
+        $image->save();
+    }
+}
+
+```
+```
+public function store()
+    {
        request()->validate([
             'fileUpload' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
        ]);
