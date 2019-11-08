@@ -1,6 +1,33 @@
 Unauthenticated User
 ------------------
 ```
+public function addproductinsert(Request $request)
+    {
+        $request->validate([
+            'product_name'=> 'required',
+            'product_description'=> 'required',
+            'product_price'=> 'required|numeric',
+            'product_quantity'=> 'required',
+            'alert_quantity'=> 'required',
+        ]);
+        $last_inserted_id = Product::insertGetId([
+            'product_name'=>$request->product_name,
+            'product_description'=>$request->product_description,
+            'product_price'=>$request->product_price,
+            'product_quantity'=>$request->product_quantity,
+            'alert_quantity'=>$request->alert_quantity,
+        ]);
+        if($request->hasFile('product_image')){
+            $photo_to_upload = $request->product_image;
+            $filename = $last_inserted_id.".".$photo_to_upload->getClientOriginalExtension();
+            Image::make($photo_to_upload)->resize(400,450)->save( base_path('public/uploads/product_photos/' . $filename ) );
+            Product::find($last_inserted_id)->update([
+                'product_image' => $filename 
+            ]);
+        }
+        return back()->with('status', 'Product Added Successfully!');
+```
+```
 public function store()
     {
         $customer = Customer::create($this->validateRequest());
