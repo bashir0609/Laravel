@@ -8,25 +8,25 @@ public function store()
         return redirect('customers');
     }
 private function validateRequest()
-{
-    return request()->validate([
-        'name' => 'required|min:3',
-        'email' => 'required|email',
-        'active' => 'required',
-        'company_id' => 'required',
-        'image' => 'sometimes|file|image|max:5000',
-    ]);
-}
-private function storeImage($customer)
-{
-    if (request()->has('image')) {
-        $customer->update([
-            'image' => request()->image->store('uploads', 'public'),
+    {
+        return request()->validate([
+            'name' => 'required|min:3',
+            'email' => 'required|email',
+            'active' => 'required',
+            'company_id' => 'required',
+            'image' => 'sometimes|file|image|max:5000',
         ]);
-        $image = Image::make(public_path('storage/' . $customer->image))->fit(300, 300, null, 'top-left');
-        $image->save();
     }
-}
+private function storeImage($customer)
+    {
+        if (request()->has('image')) {
+            $customer->update([
+                'image' => request()->image->store('uploads', 'public'),
+            ]);
+            $image = Image::make(public_path('storage/' . $customer->image))->fit(300, 300, null, 'top-left');
+            $image->save();
+        }
+    }
 
 ```
 ```
