@@ -20,7 +20,8 @@ public function addproductinsert(Request $request)
         if($request->hasFile('product_image')){
             $photo_to_upload = $request->product_image;
             $filename = $last_inserted_id.".".$photo_to_upload->getClientOriginalExtension();
-            Image::make($photo_to_upload)->resize(400,450)->save( base_path('public/uploads/product_photos/' . $filename ) );
+            $path = base_path('public/uploads/product_photos/' . $filename );
+            Image::make($photo_to_upload)->resize(400,450)->save( $path );
             Product::find($last_inserted_id)->update([
                 'product_image' => $filename 
             ]);
