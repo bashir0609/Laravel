@@ -11,16 +11,15 @@
 <div class="container">
         <div class="card-body">
             <div class="card-text ">
-                <a href=" {{ url('multi/create') }} ">Create</a>
+                <a href=" {{ url('tech/create') }} ">Create</a>
             </div>
         </div>
-        
     </hr>
     <div class="row ">        
-        @foreach ($multis as $multi)
+        @foreach ($techs as $tech)
             <div class="col-4 pb-4 ">
-                <img src="{{ Storage::url($multi->image) }}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-                <figcaption class="figure-caption">A caption for the above image.</figcaption>
+                <img src="{{ Storage::url($tech->image) }}" class="figure-img img-fluid rounded" >
+                <p >{{ $tech->title }}</p>
             </div>
         @endforeach
     </div>
