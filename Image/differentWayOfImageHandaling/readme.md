@@ -1,3 +1,28 @@
+Easy Method
+---
+```
+use Illuminate\Support\Facades\Storage;
+
+public function store()
+    {
+        $data = request()->validate([
+            'title' => 'required',
+            'image' => 'sometimes|file|image|max:5000',
+        ]);
+
+        $tech = new Tech;
+        $tech->title = request()->title;
+        if (request()->hasFile('image')) {  
+            $tech->image = request()->image->store('public/images');
+        }
+        $tech->save();
+
+        return redirect('/tech');
+    }
+    
+<img src="{{ Storage::url($tech->image) }}" class="w-100">        // in views
+```
+
 Unauthenticated User
 ------------------
 ```
