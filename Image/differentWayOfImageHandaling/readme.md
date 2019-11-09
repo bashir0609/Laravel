@@ -102,6 +102,18 @@ public function store()
  
     }
 ```
+```
+function imageUpload(Request $request) {
+
+   if ($request->hasFile('input_img')) {  //check the file present or not
+       $image = $request->file('input_img'); //get the file
+       $name = "//what every you want concatenate".'.'.$image->getClientOriginalExtension(); //get the  file extention
+       $destinationPath = public_path('/images'); //public path folder dir
+       $image->move($destinationPath, $name);  //mve to destination you mentioned 
+       $image->save(); //
+   }
+}
+```
 
 Authenticated User
 ------------------
