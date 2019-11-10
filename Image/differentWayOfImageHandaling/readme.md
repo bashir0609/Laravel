@@ -139,6 +139,32 @@ function imageUpload(Request $request) {
    }
 }
 ```
+```
+public function store(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'url' => 'required',
+            'logo' => 'required'
+        ]);
+ 
+        $website = new Website;
+ 
+        $website->title = $request->input('title');
+ 
+        $website->url = $request->input('url');
+ 
+        $website->logo = $this->uploadFile('logo', public_path('uploads/'), $request)["filename"];
+ 
+        $website->save();
+ 
+        return redirect()->route('websites.index');
+    }
+    //In Views
+    @if($website->logo != "")
+        <img src="{{ url('uploads/' . $website->logo) }}" width="150" />
+    @endif
+```
 
 Authenticated User
 ------------------
