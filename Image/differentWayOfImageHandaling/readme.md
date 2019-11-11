@@ -26,6 +26,23 @@ public function store()
 Unauthenticated User
 ------------------
 ```
+public function store()
+{
+    if(request-has('avater')){
+        $avateruploaded = $request->file('avater');
+        $avatername = time() . '.' . $avateruploaded->getclientoriginalextension();
+        $avaterpath = public_path('/images/');
+        $avateruploaded->move($avaterpath, $avatername);
+        
+        return User::create([
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'avater' => '/images/' .$avatername,
+        ])
+    }
+}
+```
+```
 public function addproductinsert(Request $request)
     {
         $request->validate([
