@@ -34,7 +34,7 @@ Unauthenticated User
         //change image name
         $featured = request()->featured;
         $originalName = $featured->getClientOriginalName();
-        $featured_new_name = 'featured' . time() . $originamName;
+        $featured_new_name = 'featured' . time() . $originalName;
         //save image to a directory
         $featured->move('uploads/featured', $featured_new_name);
         
