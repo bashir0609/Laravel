@@ -26,6 +26,27 @@ public function store()
 Unauthenticated User
 ------------------
 ```
+    public function store()
+        request()->validate([
+           'title' => 'required',
+           'featured' => 'required|image'
+        ]);
+        //change image name
+        $featured = request()->featured;
+        $originalName = $featured->getClientOriginalName();
+        $featured_new_name = 'featured' . time() . $originamName;
+        //save image to a directory
+        $featured->move('uploads/featured', $featured_new_name);
+        
+        //create post
+        $post = Post::create([
+            'title' => request()->title,
+            'featured' => 'uploads/featured' . $featured_new_name,
+        ]);
+    // In view
+    <img src="{{ url( $post_>featured ) }}">
+```
+```
 public function store()
 {
     if(request-has('avater')){
