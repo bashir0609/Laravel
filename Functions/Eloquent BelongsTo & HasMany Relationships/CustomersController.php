@@ -5,7 +5,7 @@
         $inactiveCustomers = Customer::where('active', 0)->get();
         $companies = Company::all();
 
-        return view('customers.index', compact($activeCustomers, $inactiveCustomers, $companies));
+        return view('customers.index', compact('activeCustomers', 'inactiveCustomers', 'companies'));
     }
     public function store()
     {
