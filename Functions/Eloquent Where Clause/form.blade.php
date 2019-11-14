@@ -1,4 +1,3 @@
-```
 <div class="form-group">
     <label for="active">Status</label>
     <select name="active" id="active" class="form-control">
@@ -7,5 +6,3 @@
         <option value="0">Active</option>
     </select>
 </div>
-
-```
