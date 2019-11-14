@@ -1,4 +1,4 @@
-```
+
     public function index()
     {
         $activeCustomers = Customer::where('active', 1)->get();
@@ -19,4 +19,3 @@
         return redirect('customers');
     }
     
-```
