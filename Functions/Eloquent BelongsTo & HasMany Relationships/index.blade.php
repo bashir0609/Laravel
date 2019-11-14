@@ -16,3 +16,16 @@
     </ul>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-6">
+    @foreach($cpmanies as $company)
+      <h3>{{ $company->name }}</h3>
+      <ul>
+        @foreach($company->Customers as $customer)
+          <li>{{$customer->name}} </li>
+        @endforeach
+      </ul>
+    @endforeach
+  </div>
+</div>
