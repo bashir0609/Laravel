@@ -1,4 +1,4 @@
-```
+
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
@@ -8,4 +8,3 @@
             $table->timestamps();
         });
     }
-```
