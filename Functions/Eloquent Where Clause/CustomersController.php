@@ -14,11 +14,7 @@
             'active' => 'required',
         ]);
 
-        $customer = new Customer();
-        $customer->name => request('name'),
-        $customer ->email => request('email'),
-        $customer->active => requet('active'),
-        $customer->save();
+        $customer::create($data);
 
         return redirect('customers');
     }
