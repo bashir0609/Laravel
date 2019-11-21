@@ -40,7 +40,7 @@ Start a new project
 ```
 		php artisan serve
 ```
-app.blade.php
+#app.blade.php
 -------------
 ```
 @if(session()->has('message'))
