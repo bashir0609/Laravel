@@ -40,9 +40,9 @@ Start a new project
 ```
 		php artisan serve
 ```
-#app.blade.php
+app.blade.php
 -------------
-```
+
 @if(session()->has('message'))
     <div class="alert alert-success" role="alert">
 	<strong>Success</strong> {{ session()->get('message') }}
